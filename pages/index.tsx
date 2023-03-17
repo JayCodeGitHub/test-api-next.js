@@ -1,7 +1,12 @@
 import Head from "next/head";
-//localhost:3000/
+import { useState } from "react";
 
 export default function Home() {
+  const fetchData = async () => {
+    const res = await fetch(`http://localhost:3000/api/hello`);
+    const newData = await res.json();
+    console.log(newData);
+  };
   return (
     <>
       <Head>
@@ -12,6 +17,7 @@ export default function Home() {
       </Head>
       <main>
         <h1>Hello</h1>
+        <button onClick={fetchData}>Fetch Data</button>
       </main>
     </>
   );
